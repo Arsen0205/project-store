@@ -13,6 +13,6 @@ public class ProductController {
 
     @GetMapping("/test")
     public String test() {
-        return "test"; // файл test.html должен быть в папке templates
+        return "test";
     }
 }
