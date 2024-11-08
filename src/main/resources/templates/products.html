@@ -1,7 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html" xmlns:c="http://java.sun.com/jsp/jstl/core">
 <head>
     <title>ArsenShop</title>
 </head>
-<body>Hello, ArsenShop</body>
+<body>
+<h1>ArsenShop</h1>
+<hr>
+<h4>Торговая площадка</h4>
+
+<!-- Отображение товаров с использованием JSTL -->
+<div>
+    <c:forEach var="product" items="${products}">
+        <p><b>${product.title}</b> ${product.price} руб. |
+            <a href="/product/${product.id}">Подробнее...</a></p>
+    </c:forEach>
+</div>
+
+<hr>
+<h3>Создать новый товар</h3>
+
+<!-- Форма для создания нового товара -->
+<form action="/product/create" method="post">
+    Название объявления: <input type="text" name="title"/><br><br>
+    Описание объявления: <input type="text" name="description"/><br><br>
+    Цена: <input type="number" name="price"/><br><br>
+    Город: <input type="text" name="city"/><br><br>
+    Компания: <input type="text" name="author"/><br><br>
+    <input type="submit" value="Добавить товар"/>
+</form>
+
+</body>
 </html>

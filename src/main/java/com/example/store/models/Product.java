@@ -1,6 +1,13 @@
 package com.example.store.models;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 public class Product {
+    private long id;
     private String title;
     private String description;
     private int price;
@@ -94,5 +101,13 @@ public class Product {
 
     public String toString() {
         return "Product(title=" + this.getTitle() + ", description=" + this.getDescription() + ", price=" + this.getPrice() + ", city=" + this.getCity() + ", author=" + this.getAuthor() + ")";
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
