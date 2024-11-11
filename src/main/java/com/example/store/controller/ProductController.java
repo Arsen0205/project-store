@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 //Класс, отвечающий за прием HTTP-запросов
 @Controller
 @RequiredArgsConstructor
@@ -19,8 +21,11 @@ public class ProductController {
 
     @GetMapping("/")
     public String products(@RequestParam(name = "title", required = false) String title, Model model){
-        model.addAttribute("products", productService.listProduct(title));
+        List<Product> products = productService.listProduct(title);
+        model.addAttribute("products", products);
+        System.out.println("Название товара: " + products.size());
         return "products";
+
     }
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:c="http://java.sun.com/jsp/jstl/core">
 <head>
     <title>ArsenShop</title>
 </head>
@@ -8,25 +8,31 @@
 <hr>
 <h4>Торговая площадка</h4>
 <form action="/" method="get">
-    Поиск по названию объявлений <input type="text" name="title"></br>
+    Поиск по названию объявлений <input type="text" name="title"/>
     <input type="submit" value="Поиск"/>
-</form>>
-
-
+</form>
 
 <!-- Отображение товаров с использованием JSTL -->
 <div>
-    <c:forEach var="product" items="${products}">
-        <p><b>${product.title}</b> ${product.price} руб. |
-            <a href="/product/${product.id}">Подробнее...</a></p>
-    </c:forEach>
+    <c:choose>
+        <c:when test="${not empty products}">
+            <c:forEach var="product" items="${products}">
+                <p><b>${product.title}</b> ${product.price} руб. |
+                    <a href="/product/${product.id}">Подробнее...</a>
+                </p>
+            </c:forEach>
+        </c:when>
+        <c:otherwise>
+            <p>Товаров нет</p>
+        </c:otherwise>
+    </c:choose>
 </div>
 
 <hr>
 <h3>Создать новый товар</h3>
 
-<!-- Форма для создания нового товара -->
 <form action="/product/create" method="post">
+    <!-- CSRF-токен для безопасности -->
     Название объявления: <input type="text" name="title"/><br><br>
     Описание объявления: <input type="text" name="description"/><br><br>
     Цена: <input type="number" name="price"/><br><br>
