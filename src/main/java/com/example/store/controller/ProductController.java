@@ -23,9 +23,7 @@ public class ProductController {
     public String products(@RequestParam(name = "title", required = false) String title, Model model){
         List<Product> products = productService.listProduct(title);
         model.addAttribute("products", products);
-        System.out.println("Название товара: " + products.size());
         return "products";
-
     }
 
 
