@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Entity
 @Table(name = "images")
 @Data
@@ -28,4 +29,8 @@ public class Image {
     private boolean isPreviewImage;
     @Lob
     private byte[] bytes;
+
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id")
+    private Product product;
 }

@@ -6,6 +6,9 @@
 <body>
 <h1>ArsenShop</h1>
 <div>
+    <img th:src="@{/images/{id}(id=${product.images[0].id})}" height="60px"><br><br>
+    <img th:if="${product.images.size() > 1}" th:src="@{/images/{id}(id=${product.images[1].id})}" height="60px"><br><br>
+    <img th:if="${product.images.size() > 2}" th:src="@{/images/{id}(id=${product.images[2].id})}" height="60px"><br><br>
     <p><b>Название:</b> <span th:text="${product.title}"></span></p>
     <p><b>Описание:</b> <span th:text="${product.description}"></span></p>
     <p><b>Цена:</b> <span th:text="${product.price}"></span> руб.</p>
