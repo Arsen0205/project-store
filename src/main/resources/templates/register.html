@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ArsenShop</title>
+</head>
+<body>
+<h1>ArsenShop</h1><hr>
+<h4>Регистрация</h4>
+<form action="/register" method="post">
+  Имя пользователя: <input type="text" name="name"><br><br>
+  Эл. почта: <input type="email" name="email"><br><br>
+  Номер телефона: <input type="text" name="phoneNumber"><br><br>
+  Пароль: <input type="password" name="password"><br><br>
+  <input type="hidden" name="_csrf" value="${_csrf.token}">
+  <input type="submit" value="Зарегистрироваться"/>
+</form>
+<div th:if="${errorMessage != null}">
+  <h2 style="color: red" th:text="${errorMessage}"></h2>
+</div>
+</body>
+</html>
